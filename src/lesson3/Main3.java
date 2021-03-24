@@ -1,6 +1,6 @@
 package lesson3;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Main3 {
@@ -9,15 +9,15 @@ public class Main3 {
         guessWord();
     }
 
-    private static Scanner scanner = new Scanner(System.in);
 
     public static void guessWord() {
+        Scanner scanner = new Scanner(System.in);
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi",
                 "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         String answer = words[(int) (Math.random() * words.length)];
         System.out.println("Попробуйте угадать слово");
         String userAnswer = scanner.nextLine();
-        char[] hint = {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'};
+
         for (int i = 1; i <= answer.length(); i++) {
 
             if (i == answer.length()) {
@@ -26,8 +26,14 @@ public class Main3 {
                 System.out.println("Вы угадали");
                 break;
             } else {
-                answer.getChars(0, i, hint, 0);
-                System.out.println("Вы ввели неправильное слово. Попробуйте еще раз. Подсказка: " + Arrays.toString(hint));
+                System.out.print("Вы ввели неправильное слово. Попробуйте еще раз. Подсказка: ");
+                for (int j = 0; j < i; j++) {
+                    System.out.print(answer.charAt(j));
+                }
+                for (int k = 1; k <= 15 - i; k++) {
+                    System.out.print('*');
+                }
+                System.out.println(" ");
                 userAnswer = scanner.nextLine();
             }
         }
