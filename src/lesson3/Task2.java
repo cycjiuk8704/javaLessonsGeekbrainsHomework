@@ -1,9 +1,8 @@
 package lesson3;
 
 public class Task2 {
-    public static int ATTEMPT_COUNT = 0;
 
-    public static void execute2() {
+    public static void task2GuessWord() {
         guessWord();
     }
 
@@ -12,21 +11,22 @@ public class Task2 {
         final String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi",
                 "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         final String answer = words[(int) (Math.random() * words.length)];
+        int attemptCount = 0;
         System.out.println("Попробуйте угадать слово");
 
         while (true) {
             String userAnswer = Main3.scanner.nextLine();
-            ATTEMPT_COUNT++;
+            attemptCount++;
 
             if (userAnswer.equals(answer)) {
                 System.out.println("Вы угадали");
                 break;
-            } else if (ATTEMPT_COUNT == answer.length()) {
+            } else if (attemptCount == answer.length()) {
                 System.out.println("Вы проиграли. Загаданное слово - " + answer);
                 break;
             }
 
-            printHint(answer, ATTEMPT_COUNT);
+            printHint(answer, attemptCount);
         }
     }
 

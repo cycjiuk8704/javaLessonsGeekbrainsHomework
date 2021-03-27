@@ -2,7 +2,7 @@ package lesson3;
 
 public class Task1 {
 
-    public static void execute1() {
+    public static void task1GuessNumber() {
 
         final int minNumber = 0;
         final int maxNumber = 9;
