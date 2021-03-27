@@ -7,7 +7,7 @@ public class Main3 {
     public static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        final Scanner scannerMain = new Scanner(System.in);
+        final Scanner scannerMain = new Scanner(System.in); // с одним внешним сканнером игра "Угадай слово" работала некорректно
         while (true) {
             System.out.println("Чтобы запустить игру введите с клавиатуры:");
             System.out.println("1 - угадайть чиcло");
