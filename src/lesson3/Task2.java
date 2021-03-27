@@ -15,7 +15,7 @@ public class Task2 {
         System.out.println("Попробуйте угадать слово");
 
         while (true) {
-            String userAnswer = Main3.scanner.nextLine();
+            String userAnswer = Main3.scanner.next();
             attemptCount++;
 
             if (userAnswer.equals(answer)) {
