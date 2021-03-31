@@ -4,8 +4,8 @@ package geekbrainsjava.lesson4;
 import java.util.Random;
 import java.util.Scanner;
     public class main4 {
-        public static int SIZE = 3;
-        public static int DOTS_TO_WIN = 3;
+        public static int SIZE = 5;
+        public static int DOTS_TO_WIN = 4;
         public static final char DOT_EMPTY = '•';
         public static final char DOT_X = 'X';
         public static final char DOT_O = 'O';
@@ -81,7 +81,7 @@ import java.util.Scanner;
             for (int i = 0; SIZE - i >= DOTS_TO_WIN; i++) { // main diagonal check
                 int winCountDiag1 = 0;
                 int winCountDiag2 = 0;
-                for (int j = 0, k = i; SIZE - j <= DOTS_TO_WIN && k < SIZE; j++, k++){
+                for (int j = 0, k = i; (SIZE - j <= DOTS_TO_WIN) && (k < SIZE); j++, k++){
                     if (map[j][k] == symb){
                         winCountDiag1++;
                     } else {
