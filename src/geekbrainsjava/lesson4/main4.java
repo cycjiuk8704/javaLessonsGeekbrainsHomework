@@ -107,7 +107,7 @@ import java.util.Scanner;
                     } else {
                         winCountDiag1 = 0;
                     }
-                    if (map[k][j] == symb){
+                    if (map[SIZE - 1 - k][SIZE - 1 - j] == symb){
                         winCountDiag2++;
                     } else {
                         winCountDiag2 = 0;
