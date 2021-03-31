@@ -78,39 +78,41 @@ import java.util.Scanner;
                 }
             }
 
-            for (int i = 0; SIZE - i <= DOTS_TO_WIN; i++) { // main diagonal check
-                int winCountDiag = 0;
-                for (int j = 0, k = i; SIZE - j < DOTS_TO_WIN; j++, k++){
+            for (int i = 0; SIZE - i >= DOTS_TO_WIN; i++) { // main diagonal check
+                int winCountDiag1 = 0;
+                int winCountDiag2 = 0;
+                for (int j = 0, k = i; SIZE - j <= DOTS_TO_WIN && k < SIZE; j++, k++){
                     if (map[j][k] == symb){
-                        winCountDiag++;
+                        winCountDiag1++;
                     } else {
-                        winCountDiag = 0;
+                        winCountDiag1 = 0;
                     }
                     if (map[k][j] == symb){
-                        winCountDiag++;
+                        winCountDiag2++;
                     } else {
-                        winCountDiag = 0;
+                        winCountDiag2 = 0;
                     }
-                    if (winCountDiag == DOTS_TO_WIN){
+                    if (winCountDiag1 == DOTS_TO_WIN || winCountDiag2 == DOTS_TO_WIN){
                         return true;
                     }
                 }
             }
 
             for (int i = SIZE; i >= DOTS_TO_WIN; i--) { // second diagonal check
-                int winCountDiag = 0;
-                for (int j = 0, k = i - 1; SIZE - j <= DOTS_TO_WIN; j++, k--){
+                int winCountDiag1 = 0;
+                int winCountDiag2 = 0;
+                for (int j = 0, k = i - 1; SIZE - j <= DOTS_TO_WIN && k >= 0; j++, k--){
                     if (map[j][k] == symb){
-                        winCountDiag++;
+                        winCountDiag1++;
                     } else {
-                        winCountDiag = 0;
+                        winCountDiag1 = 0;
                     }
                     if (map[k][j] == symb){
-                        winCountDiag++;
+                        winCountDiag2++;
                     } else {
-                        winCountDiag = 0;
+                        winCountDiag2 = 0;
                     }
-                    if (winCountDiag == DOTS_TO_WIN){
+                    if (winCountDiag1 == DOTS_TO_WIN || winCountDiag2 == DOTS_TO_WIN){
                         return true;
                     }
                 }
