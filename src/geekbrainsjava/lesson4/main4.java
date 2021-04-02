@@ -9,7 +9,7 @@ import java.util.Scanner;
         public static final char DOT_EMPTY = '•';
         public static final char DOT_X = 'X';
         public static final char DOT_O = 'O';
-        public static char[][] map;
+        public static char[][] field;
         public static Scanner sc = new Scanner(System.in);
         public static Random rand = new Random();
         public static void main(String[] args) {
@@ -40,39 +40,23 @@ import java.util.Scanner;
             System.out.println("Игра закончена");
         }
 
-//        public static String toString(Object a[]) {
-//            if (a == null)
-//                return "null";
-//
-//            int iMax = a.length - 1;
-//            if (iMax == -1)
-//                return " ";
-//
-//            StringBuilder b = new StringBuilder();
-//            for (int i = 0; ; i++) {
-//                b.append(String.valueOf(a[i]));
-//                if (i == iMax)
-//                    return;
-//                b.append(" ");
-//            }
-//        }
 
         public static boolean checkWin(char symb) {
             for (int i = 0; i < SIZE; i++) { // vertical and horizontal lines check
-                int winCountY = 0;
-                int winCountX = 0;
+                int winCountVertical = 0;
+                int winCountHorizontal = 0;
                 for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == symb){
-                    winCountY++;
+                if (field[i][j] == symb){
+                    winCountVertical++;
                 } else {
-                    winCountY = 0;
+                    winCountVertical = 0;
                 }
-                    if (map[j][i] == symb){
-                        winCountX++;
+                    if (field[j][i] == symb){
+                        winCountHorizontal++;
                     } else {
-                        winCountX = 0;
+                        winCountHorizontal = 0;
                     }
-                if (winCountY == DOTS_TO_WIN || winCountX == DOTS_TO_WIN){
+                if (winCountVertical == DOTS_TO_WIN || winCountHorizontal == DOTS_TO_WIN){
                     return true;
                 }
                 }
@@ -82,12 +66,12 @@ import java.util.Scanner;
                 int winCountDiag1 = 0;
                 int winCountDiag2 = 0;
                 for (int j = 0, k = i; k < SIZE; j++, k++){
-                    if (map[j][k] == symb){
+                    if (field[j][k] == symb){
                         winCountDiag1++;
                     } else {
                         winCountDiag1 = 0;
                     }
-                    if (map[k][j] == symb){
+                    if (field[k][j] == symb){
                         winCountDiag2++;
                     } else {
                         winCountDiag2 = 0;
@@ -102,12 +86,12 @@ import java.util.Scanner;
                 int winCountDiag1 = 0;
                 int winCountDiag2 = 0;
                 for (int j = 0, k = i - 1; k >= 0; j++, k--){
-                    if (map[j][k] == symb){
+                    if (field[j][k] == symb){
                         winCountDiag1++;
                     } else {
                         winCountDiag1 = 0;
                     }
-                    if (map[SIZE - 1 - k][SIZE - 1 - j] == symb){
+                    if (field[SIZE - 1 - k][SIZE - 1 - j] == symb){
                         winCountDiag2++;
                     } else {
                         winCountDiag2 = 0;
@@ -117,20 +101,13 @@ import java.util.Scanner;
                     }
                 }
             }
-//            if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-//            if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-//            if (map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-//            if (map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-//            if (map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-//            if (map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-//            if (map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-//            if (map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+
             return false;
         }
         public static boolean isMapFull() {
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j < SIZE; j++) {
-                    if (map[i][j] == DOT_EMPTY) return false;
+                    if (field[i][j] == DOT_EMPTY) return false;
                 }
             }
             return true;
@@ -142,7 +119,7 @@ import java.util.Scanner;
                 y = rand.nextInt(SIZE);
             } while (isCellNotValid(x, y));
             System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
-            map[y][x] = DOT_O;
+            field[y][x] = DOT_O;
         }
         public static void humanTurn() {
             int x, y;
@@ -151,17 +128,17 @@ import java.util.Scanner;
                 x = sc.nextInt() - 1;
                 y = sc.nextInt() - 1;
             } while (isCellNotValid(x, y));
-            map[y][x] = DOT_X;
+            field[y][x] = DOT_X;
         }
         public static boolean isCellNotValid(int x, int y) {
             if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return true;
-            return map[y][x] != DOT_EMPTY;
+            return field[y][x] != DOT_EMPTY;
         }
         public static void initMap() {
-            map = new char[SIZE][SIZE];
+            field = new char[SIZE][SIZE];
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j < SIZE; j++) {
-                    map[i][j] = DOT_EMPTY;
+                    field[i][j] = DOT_EMPTY;
                 }
             }
         }
@@ -173,7 +150,7 @@ import java.util.Scanner;
             for (int i = 0; i < SIZE; i++) {
                 System.out.print((i + 1) + " ");
                 for (int j = 0; j < SIZE; j++) {
-                    System.out.print(map[i][j] + " ");
+                    System.out.print(field[i][j] + " ");
                 }
                 System.out.println();
             }
