@@ -49,12 +49,12 @@ public class Worker {
         }
     }
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
 
-    public void printWorkerInfo () {
-        System.out.println("Сотрудник: " + name + ". Должность: " + position + ". Email: " + email + ". Номер телефона : " + phoneNumber + ". Зарплата: " + salary +". Возраст: " + age + '.');
+    public void printWorkerInfo() {
+        System.out.println("Сотрудник: " + name + ". Должность: " + position + ". Email: " + email + ". Номер телефона : " + phoneNumber + ". Зарплата: " + salary + ". Возраст: " + age + '.');
     }
 
 }
