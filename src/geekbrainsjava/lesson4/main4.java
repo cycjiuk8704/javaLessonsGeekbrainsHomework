@@ -5,6 +5,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class main4 {
+    public static int xAiMove;
+    public static int yAiMove;
     public static int SIZE = 5;
     public static int DOTS_TO_WIN = 4;
     public static final char DOT_EMPTY = '•';
@@ -13,6 +15,7 @@ public class main4 {
     public static char[][] field;
     public static Scanner sc = new Scanner(System.in);
     public static Random rand = new Random();
+    public static int[][] moveScore = new int [SIZE][SIZE];
 
     public static void main(String[] args) {
         initMap();
@@ -20,7 +23,7 @@ public class main4 {
         while (true) {
             humanTurn();
             printMap();
-            if (checkWin(DOT_X)) {
+            if (checkWin(DOT_X, field)) {
                 System.out.println("Победил человек");
                 break;
             }
@@ -28,9 +31,15 @@ public class main4 {
                 System.out.println("Ничья");
                 break;
             }
+            for (int i = 0; i < SIZE; i++) {
+                for (int j = 0; j < SIZE; j++) {
+                   moveScore[i][j] = 0;
+                }
+            }
+            minimax(DOT_O, field);  //TODO
             aiTurn();
             printMap();
-            if (checkWin(DOT_O)) {
+            if (checkWin(DOT_O, field)) {
                 System.out.println("Победил Искуственный Интеллект");
                 break;
             }
@@ -43,7 +52,7 @@ public class main4 {
     }
 
 
-    public static boolean checkWin(char symb) {
+    public static boolean checkWin(char symb, char[][] field) {
         for (int i = 0; i < SIZE; i++) { // vertical and horizontal lines check
             int winCountVertical = 0;
             int winCountHorizontal = 0;
@@ -117,14 +126,17 @@ public class main4 {
     }
 
     public static void aiTurn() {
-        int x, y;
-        do {
-            x = rand.nextInt(SIZE);
-            y = rand.nextInt(SIZE);
-        } while (isCellNotValid(x, y));
-        System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
-        field[y][x] = DOT_O;
+        minimax(DOT_O, field);
+        field[yAiMove][xAiMove] = DOT_O;
     }
+//        int x, y;
+//        do {
+//            x = rand.nextInt(SIZE);
+//            y = rand.nextInt(SIZE);
+//        } while (isCellNotValid(x, y));
+//        System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
+//        field[y][x] = DOT_O;
+//    }
 
     public static void humanTurn() {
         int x, y;
@@ -134,6 +146,58 @@ public class main4 {
             y = sc.nextInt() - 1;
         } while (isCellNotValid(x, y));
         field[y][x] = DOT_X;
+    }
+
+    public static void minimax(char symb, char[][] fieldIn){
+//        for (int i = 0; i < SIZE; i++) {
+//            for (int j = 0; j < SIZE; j++) {
+//                moveScore[i][j] = 0;
+//            }
+//        }
+        char[][] newField = new char [SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            System.arraycopy(fieldIn[i], 0, newField[i], 0, SIZE);
+        }
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (newField[i][j] == DOT_EMPTY) {
+                    newField[i][j] = symb;
+                    if (isMapFull()) {
+                        moveScore[i][j] = 0;
+
+                    } else if (checkWin(DOT_X, newField)) {
+                        moveScore[i][j] = -10;
+
+                    } else if (checkWin(DOT_O, newField)) {
+                        moveScore[i][j] = 10;
+
+                    } else if (symb == DOT_O) {
+                        minimax(DOT_X, newField);
+                        return;
+                    } else if (symb == DOT_X) {
+                        minimax(DOT_O, newField);
+                        return;
+                    }
+                }
+            }
+        }
+        int bestScore = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (moveScore[i][j] > bestScore){
+                    bestScore = moveScore[i][j];
+                }
+            }
+        }
+
+
+        do {
+            xAiMove = rand.nextInt(SIZE);
+            yAiMove = rand.nextInt(SIZE);
+        } while (moveScore[yAiMove][xAiMove] == bestScore);
+
+        //TODO
+
     }
 
     public static boolean isCellNotValid(int x, int y) {
