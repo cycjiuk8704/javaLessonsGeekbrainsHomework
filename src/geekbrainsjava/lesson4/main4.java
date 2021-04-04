@@ -36,7 +36,7 @@ public class main4 {
                    moveScore[i][j] = 0;
                 }
             }
-            minimax(DOT_O, field);  //TODO
+            minimax(DOT_O, field);
             aiTurn();
             printMap();
             if (checkWin(DOT_O, field)) {
@@ -149,11 +149,6 @@ public class main4 {
     }
 
     public static void minimax(char symb, char[][] fieldIn){
-//        for (int i = 0; i < SIZE; i++) {
-//            for (int j = 0; j < SIZE; j++) {
-//                moveScore[i][j] = 0;
-//            }
-//        }
         char[][] newField = new char [SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             System.arraycopy(fieldIn[i], 0, newField[i], 0, SIZE);
@@ -195,8 +190,6 @@ public class main4 {
             xAiMove = rand.nextInt(SIZE);
             yAiMove = rand.nextInt(SIZE);
         } while (moveScore[yAiMove][xAiMove] == bestScore);
-
-        //TODO
 
     }
 
