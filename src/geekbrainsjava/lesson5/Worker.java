@@ -37,7 +37,7 @@ public class Worker {
         if (salary >= 0) {
             this.salary = salary;
         } else {
-            System.out.println("Ошибка! Некорректно указана зарплата.");
+            System.err.println("Ошибка! Некорректно указана зарплата.");
         }
     }
 
