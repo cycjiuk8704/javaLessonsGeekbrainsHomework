@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class main4 {
     public static int xAiMove;
     public static int yAiMove;
-    public static int SIZE = 5;
-    public static int DOTS_TO_WIN = 4;
+    public static int SIZE = 3;
+    public static int DOTS_TO_WIN = 3;
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -31,11 +31,7 @@ public class main4 {
                 System.out.println("Ничья");
                 break;
             }
-            for (int i = 0; i < SIZE; i++) {
-                for (int j = 0; j < SIZE; j++) {
-                   moveScore[i][j] = 0;
-                }
-            }
+
             minimax(DOT_O, field);
             aiTurn();
             printMap();
@@ -149,6 +145,11 @@ public class main4 {
     }
 
     public static void minimax(char symb, char[][] fieldIn){
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                moveScore[i][j] = 0;
+            }
+        }
         char[][] newField = new char [SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             System.arraycopy(fieldIn[i], 0, newField[i], 0, SIZE);
