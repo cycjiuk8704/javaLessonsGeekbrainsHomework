@@ -45,7 +45,7 @@ public class Worker {
         if (age >= 18 && age <= 75) {
             this.age = age;
         } else {
-            System.out.println("Ошибка! Некорректно указан возраст.");
+            System.err.println("Ошибка! Некорректно указан возраст.");
         }
     }
 
@@ -53,8 +53,10 @@ public class Worker {
         return age;
     }
 
-    public void printWorkerInfo() {
-        System.out.println("Сотрудник: " + name + ". Должность: " + position + ". Email: " + email + ". Номер телефона : " + phoneNumber + ". Зарплата: " + salary + ". Возраст: " + age + '.');
+        @Override
+
+    public String toString() {
+        return "Сотрудник: " + name + ". Должность: " + position + ". Email: " + email + ". Номер телефона : " + phoneNumber + ". Зарплата: " + salary + ". Возраст: " + age + '.';
     }
 
 }
