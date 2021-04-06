@@ -1,8 +1,8 @@
 package geekbrainsjava.lesson6;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
 
-    public Cat (String name, int swimDistance, int runDistance){
+    public Cat(String name, int swimDistance, int runDistance) {
         catCount++;
         this.name = name;
         setSwimDistance(swimDistance);

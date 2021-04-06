@@ -1,6 +1,6 @@
 package geekbrainsjava.lesson6;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
 
     public Dog(String name, int swimDistance, int runDistance) {
         dogCount++;
