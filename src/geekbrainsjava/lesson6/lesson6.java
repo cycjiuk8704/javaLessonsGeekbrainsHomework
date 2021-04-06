@@ -7,8 +7,7 @@ public class lesson6 {
 
         catMurzik.run();
         dogBobik.swim();
-        Animal.animalCount = Animal.catCount + Animal.dogCount;
 
-        System.out.println("Всего создано " + Animal.dogCount + " собак, " + Animal.catCount + " кошек. Всего животных : " + Animal.animalCount);
+        System.out.println("Всего создано " + Dog.dogCount + " собак, " + Cat.catCount + " кошек. Всего животных : " + Animal.animalCount(Cat.catCount, Dog.dogCount));
     }
 }

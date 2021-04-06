@@ -2,6 +2,8 @@ package geekbrainsjava.lesson6;
 
 public class Dog extends Animal {
 
+    public static int dogCount = 0;
+
     public Dog(String name, int swimDistance, int runDistance) {
         dogCount++;
         this.name = name;
