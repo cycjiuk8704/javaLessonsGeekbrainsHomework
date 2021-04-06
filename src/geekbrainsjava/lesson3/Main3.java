@@ -1,4 +1,4 @@
-package lesson3;
+package geekbrainsjava.lesson3;
 
 import java.util.Scanner;
 
