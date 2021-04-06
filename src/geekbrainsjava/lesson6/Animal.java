@@ -5,8 +5,8 @@ public abstract class Animal {
     protected int runDistance;
     protected String name;
 
-    public static int animalCount(int catCount, int dogCount) {
-        return catCount + dogCount;
+    public static int animalCount() {
+        return Cat.catCount + Dog.dogCount;
     }
 
     public abstract void swim();
