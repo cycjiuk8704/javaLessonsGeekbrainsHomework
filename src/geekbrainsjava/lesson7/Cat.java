@@ -3,7 +3,7 @@ package geekbrainsjava.lesson7;
 public class Cat {
     private String name;
     private final int appetite;
-    private boolean satiety = false;
+    private boolean isFull = false;
 
     public Cat(String name, int appetite) {
         this.name = name;
@@ -11,11 +11,11 @@ public class Cat {
     }
 
     public void eat(Plate p, int food) {
-        if (food >= appetite && !satiety) {
-            p.decreaseFood(appetite);
-            satiety = true;
+        if (food >= appetite && !isFull) {
+            p.consumeFood(appetite);
+            isFull = true;
             System.out.println("Кот " + name + " поел");
-        } else if (!satiety){
+        } else if (!isFull) {
             System.out.println("Коту " + name + " недостаточно еды в миске");
         }
     }

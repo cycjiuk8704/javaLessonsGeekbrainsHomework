@@ -13,19 +13,20 @@ public class Main {
         };
 
         Plate plate = new Plate(100);
-        plate.info();
-        feedCat(catAr, plate);
-        plate.info();
+        plate.showInfo();
+        feedCats(catAr, plate);
+        plate.showInfo();
 
-        plate.addFood(plate, 40);
-        plate.info();
+        plate.addFood(40);
+        plate.showInfo();
 
-        feedCat(catAr, plate);
-        plate.info();
+        feedCats(catAr, plate);
+        plate.showInfo();
 
     }
-    public static void feedCat(Cat[] catAr, Plate plate){
-        for (Cat cat:catAr) {
+
+    public static void feedCats(Cat[] catAr, Plate plate) {
+        for (Cat cat : catAr) {
             cat.eat(plate, plate.getFood());
         }
     }
