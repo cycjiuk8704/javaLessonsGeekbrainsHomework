@@ -10,8 +10,8 @@ public class Cat {
         this.appetite = appetite;
     }
 
-    public void eat(Plate p, int food) {
-        if (food >= appetite && !isFull) {
+    public void eat(Plate p) {
+        if (p.getFood() >= appetite && !isFull) {
             p.consumeFood(appetite);
             isFull = true;
             System.out.println("Кот " + name + " поел");

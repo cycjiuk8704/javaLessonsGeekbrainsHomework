@@ -27,7 +27,7 @@ public class Main {
 
     public static void feedCats(Cat[] catAr, Plate plate) {
         for (Cat cat : catAr) {
-            cat.eat(plate, plate.getFood());
+            cat.eat(plate);
         }
     }
 }
