@@ -1,7 +1,7 @@
 package geekbrainsjava.lesson7;
 
 public class Cat {
-    private String name;
+    private final String name;
     private final int appetite;
     private boolean isFull = false;
 
