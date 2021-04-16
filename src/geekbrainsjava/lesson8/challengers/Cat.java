@@ -1,6 +1,8 @@
-package geekbrainsjava.lesson8;
+package geekbrainsjava.lesson8.challengers;
 
-public class Cat implements Challengeable{
+import geekbrainsjava.lesson8.Challengeable;
+
+public class Cat implements Challengeable {
     private final String name;
     private final int maxClimbDistance;
     private final int maxRunDistance;
@@ -14,20 +16,23 @@ public class Cat implements Challengeable{
     @Override
     public void climb() {
         System.out.println("Кот " + name + " преодолел высоту");
+
     }
 
     @Override
     public void run() {
+
         System.out.println("Кот " + name + " пробежал расстояние");
+
     }
 
     @Override
-    public int getLength() {
+    public int getMaxRunDistance() {
         return maxRunDistance;
     }
 
     @Override
-    public int getHeight() {
+    public int getMaxClimbDistance() {
         return maxClimbDistance;
     }
 

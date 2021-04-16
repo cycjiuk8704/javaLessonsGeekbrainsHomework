@@ -1,6 +1,7 @@
 package geekbrainsjava.lesson8;
 
 public interface Overcomeable {
-    int getLength();
-    int getHeight();
+    int getWallHeight();
+    int getRunLength();
+
 }

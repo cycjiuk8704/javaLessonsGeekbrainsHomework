@@ -3,7 +3,7 @@ package geekbrainsjava.lesson8;
 public interface Challengeable {
     void climb();
     void run();
-    int getLength();
-    int getHeight();
+    int getMaxRunDistance();
+    int getMaxClimbDistance();
     String getName();
 }

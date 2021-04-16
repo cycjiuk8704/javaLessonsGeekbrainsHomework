@@ -1,11 +1,14 @@
-package geekbrainsjava.lesson8;
+package geekbrainsjava.lesson8.challengers;
 
-public class Robot implements Challengeable{
+import geekbrainsjava.lesson8.Challengeable;
+
+public class Human implements Challengeable {
+
     private final String name;
     private final int maxClimbDistance;
     private final int maxRunDistance;
 
-    public Robot(String name, int maxClimbDistance, int maxRunDistance) {
+    public Human(String name, int maxClimbDistance, int maxRunDistance) {
         this.name = name;
         this.maxClimbDistance = maxClimbDistance;
         this.maxRunDistance = maxRunDistance;
@@ -13,21 +16,23 @@ public class Robot implements Challengeable{
 
     @Override
     public void climb() {
-        System.out.println("Робот " + name + " преодолел высоту");
+        System.out.println("Человек " + name + " преодолел высоту");
+
     }
+
 
     @Override
     public void run() {
-        System.out.println("Робот " + name + " пробежал расстояние");
+        System.out.println("Человек " + name + " пробежал расстояние");
     }
 
     @Override
-    public int getLength() {
+    public int getMaxRunDistance() {
         return maxRunDistance;
     }
 
     @Override
-    public int getHeight() {
+    public int getMaxClimbDistance() {
         return maxClimbDistance;
     }
 
