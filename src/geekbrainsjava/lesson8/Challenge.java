@@ -4,7 +4,7 @@ import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 
 public class Challenge {
 
-    public void passObstacles(Challengeable[] challengeables, Overcomeable[] overcomeables) {
+    public static void passObstacles(Challengeable[] challengeables, Overcomeable[] overcomeables) {
         for (Challengeable challengeable : challengeables) {
             for (Overcomeable overcomeable : overcomeables) {
                 if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() <= challengeable.getMaxClimbDistance()) {
