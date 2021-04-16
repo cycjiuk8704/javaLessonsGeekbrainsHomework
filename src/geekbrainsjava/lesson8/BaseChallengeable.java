@@ -9,19 +9,19 @@ public abstract class BaseChallengeable implements Challengeable {
     abstract protected void climb();
 
     public final boolean passObstacle(Overcomeable overcomeable) {
-        if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL)) {
+        if (overcomeable.getDirection() == (ObstacleDirection.VERTICAL)) {
             if (overcomeable.getDistance() <= getMaxClimbDistance()) {
                 climb();
                 return true;
-            } else if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() > getMaxClimbDistance()) {
+            } else if (overcomeable.getDistance() > getMaxClimbDistance()) {
                 printLoser(getName());
                 return false;
             }
-        } else if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL)) {
-            if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() <= getMaxRunDistance()) {
+        } else if (overcomeable.getDirection() == (ObstacleDirection.HORIZONTAL)) {
+            if (overcomeable.getDirection() == (ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() <= getMaxRunDistance()) {
                 run();
                 return true;
-            } else if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() > getMaxRunDistance()) {
+            } else if (overcomeable.getDirection() == (ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() > getMaxRunDistance()) {
                 printLoser(getName());
                 return false;
             }
