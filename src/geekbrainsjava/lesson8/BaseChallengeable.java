@@ -8,6 +8,7 @@ public abstract class BaseChallengeable implements Challengeable {
 
     abstract protected void climb();
 
+    @Override
     public final boolean passObstacle(Overcomeable overcomeable) {
         if (overcomeable.getDirection() == (ObstacleDirection.VERTICAL)) {
             if (overcomeable.getDistance() <= getMaxClimbDistance()) {
