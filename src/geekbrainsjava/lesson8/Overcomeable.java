@@ -1,7 +1,8 @@
 package geekbrainsjava.lesson8;
 
-public interface Overcomeable {
-    int getWallHeight();
-    int getRunLength();
+import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 
+public interface Overcomeable {
+    int getDistance();
+    ObstacleDirection getDirection();
 }

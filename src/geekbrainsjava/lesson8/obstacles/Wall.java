@@ -11,13 +11,13 @@ public class Wall implements Overcomeable {
     }
 
     @Override
-    public int getWallHeight() {
+    public int getDistance() {
         return wallHeight;
     }
 
     @Override
-    public int getRunLength() {
-        return 0;
+    public ObstacleDirection getDirection() {
+        return ObstacleDirection.VERTICAL;
     }
 
 }

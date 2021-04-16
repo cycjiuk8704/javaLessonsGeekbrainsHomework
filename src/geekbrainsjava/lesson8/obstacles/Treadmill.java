@@ -11,12 +11,12 @@ public class Treadmill implements Overcomeable {
     }
 
     @Override
-    public int getWallHeight() {
-        return 0;
+    public ObstacleDirection getDirection() {
+        return ObstacleDirection.HORIZONTAL;
     }
 
     @Override
-    public int getRunLength() {
+    public int getDistance() {
         return runLength;
     }
 
