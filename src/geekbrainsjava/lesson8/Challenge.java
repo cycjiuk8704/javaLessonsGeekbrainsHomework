@@ -4,21 +4,25 @@ import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 
 public class Challenge {
 
-    public static void passObstacles(Challengeable[] challengeables, Overcomeable[] overcomeables) {
+    public void passObstacles(Challengeable[] challengeables, Overcomeable[] overcomeables) {
         for (Challengeable challengeable : challengeables) {
             for (Overcomeable overcomeable : overcomeables) {
-                if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() <= challengeable.getMaxClimbDistance()) {
-                    challengeable.passObstacle(ObstacleDirection.VERTICAL);
-                } else if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() > challengeable.getMaxClimbDistance()) {
-                    printLoser(challengeable.getName());
+                  if (!challengeable.passObstacle(overcomeable)) {
                     break;
-                }
-                if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() <= challengeable.getMaxRunDistance()) {
-                    challengeable.passObstacle(ObstacleDirection.HORIZONTAL);
-                } else if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() > challengeable.getMaxRunDistance()) {
-                    printLoser(challengeable.getName());
-                    break;
-                }
+                  }
+
+//                if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() <= challengeable.getMaxClimbDistance()) {
+//                    challengeable.passObstacle(ObstacleDirection.VERTICAL);
+//                } else if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() > challengeable.getMaxClimbDistance()) {
+//                    printLoser(challengeable.getName());
+//                    break;
+//                }
+//                if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() <= challengeable.getMaxRunDistance()) {
+//                    challengeable.passObstacle(ObstacleDirection.HORIZONTAL);
+//                } else if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() > challengeable.getMaxRunDistance()) {
+//                    printLoser(challengeable.getName());
+//                    break;
+//                }
             }
         }
     }

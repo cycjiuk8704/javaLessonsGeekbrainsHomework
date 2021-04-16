@@ -1,9 +1,10 @@
 package geekbrainsjava.lesson8.challengers;
 
+import geekbrainsjava.lesson8.BaseChallengeable;
 import geekbrainsjava.lesson8.Challengeable;
 import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 
-public class Robot implements Challengeable {
+public class Robot extends BaseChallengeable implements Challengeable {
     private final String name;
     private final int maxClimbDistance;
     private final int maxRunDistance;
@@ -14,22 +15,32 @@ public class Robot implements Challengeable {
         this.maxRunDistance = maxRunDistance;
     }
 
-    private void climb() {
-        System.out.println("Робот " + name + " преодолел высоту");
-    }
-
-    private void run() {
+    @Override
+    protected void run() {
         System.out.println("Робот " + name + " пробежал расстояние");
     }
 
     @Override
-    public void passObstacle(ObstacleDirection obstacleDirection) {
-        if (obstacleDirection == ObstacleDirection.VERTICAL) {
-            climb();
-        } else {
-            run();
-        }
+    protected void climb() {
+        System.out.println("Робот " + name + " преодолел высоту");
     }
+
+    //    private void climb() {
+//        System.out.println("Робот " + name + " преодолел высоту");
+//    }
+//
+//    private void run() {
+//        System.out.println("Робот " + name + " пробежал расстояние");
+//    }
+
+//    @Override
+//    public void passObstacle(ObstacleDirection obstacleDirection) {
+//        if (obstacleDirection == ObstacleDirection.VERTICAL) {
+//            climb();
+//        } else {
+//            run();
+//        }
+//    }
 
     @Override
     public int getMaxRunDistance() {

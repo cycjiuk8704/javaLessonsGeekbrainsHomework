@@ -5,4 +5,5 @@ import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 public interface Overcomeable {
     int getDistance();
     ObstacleDirection getDirection();
+
 }
