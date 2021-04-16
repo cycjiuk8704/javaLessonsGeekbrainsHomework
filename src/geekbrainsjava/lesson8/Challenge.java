@@ -8,13 +8,13 @@ public class Challenge {
         for (Challengeable challengeable : challengeables) {
             for (Overcomeable overcomeable : overcomeables) {
                 if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() <= challengeable.getMaxClimbDistance()) {
-                    challengeable.climb();
+                    challengeable.passObstacle(ObstacleDirection.VERTICAL);
                 } else if (overcomeable.getDirection().equals(ObstacleDirection.VERTICAL) && overcomeable.getDistance() > challengeable.getMaxClimbDistance()) {
                     printLoser(challengeable.getName());
                     break;
                 }
                 if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() <= challengeable.getMaxRunDistance()) {
-                    challengeable.run();
+                    challengeable.passObstacle(ObstacleDirection.HORIZONTAL);
                 } else if (overcomeable.getDirection().equals(ObstacleDirection.HORIZONTAL) && overcomeable.getDistance() > challengeable.getMaxRunDistance()) {
                     printLoser(challengeable.getName());
                     break;
