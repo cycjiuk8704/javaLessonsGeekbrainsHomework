@@ -11,7 +11,7 @@ public class ArraySum {
                 try {
                     sum += Integer.parseInt(arrayToSum[i][j]);
                 } catch (NumberFormatException nfe) {
-                    throw new MyArrayDataException(i, j, arrayToSum[i][j], nfe);
+                    throw new MyArrayDataException(i, j, arrayToSum[i][j]);
                 }
             }
         }
