@@ -9,6 +9,6 @@ public class Main {
                 {"13", "14", "15", "16"},
                 {"17", "18", "19", "20"},
         };
-        System.out.println(ArrayChecker.sumArrayElements(sumArr));
+        System.out.println(ArraySum.sumArrayElements(sumArr));
     }
 }
