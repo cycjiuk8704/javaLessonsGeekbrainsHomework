@@ -2,15 +2,13 @@ package geekbrainsjava.lesson8;
 
 public class Challenge {
 
-    public void passObstacles(Challengeable[] challengeables, Overcomeable[] overcomeables) {
+    public void passObstacles(Challengeable[] challengeables, Surmountable[] surmountables) {
         for (Challengeable challengeable : challengeables) {
-            for (Overcomeable overcomeable : overcomeables) {
-                  if (!challengeable.passObstacle(overcomeable)) {
+            for (Surmountable surmountable : surmountables) {
+                if (!challengeable.passObstacle(surmountable)) {
                     break;
-                  }
-
+                }
             }
         }
     }
-
 }

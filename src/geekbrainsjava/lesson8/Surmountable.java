@@ -2,8 +2,10 @@ package geekbrainsjava.lesson8;
 
 import geekbrainsjava.lesson8.obstacles.ObstacleDirection;
 
-public interface Overcomeable {
+public interface Surmountable {
+
     int getDistance();
+
     ObstacleDirection getDirection();
 
 }

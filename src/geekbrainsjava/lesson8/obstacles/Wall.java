@@ -1,8 +1,8 @@
 package geekbrainsjava.lesson8.obstacles;
 
-import geekbrainsjava.lesson8.Overcomeable;
+import geekbrainsjava.lesson8.Surmountable;
 
-public class Wall implements Overcomeable {
+public class Wall implements Surmountable {
 
     private final int wallHeight;
 

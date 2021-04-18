@@ -1,8 +1,8 @@
 package geekbrainsjava.lesson8.obstacles;
 
-import geekbrainsjava.lesson8.Overcomeable;
+import geekbrainsjava.lesson8.Surmountable;
 
-public class Treadmill implements Overcomeable {
+public class Treadmill implements Surmountable {
 
     private final int runLength;
 
