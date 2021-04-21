@@ -1,24 +1,24 @@
 package geekbrainsjava.lesson10;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Phonebook {
 
-    HashMap<String, ArrayList<String>> phoneBook = new HashMap<>();
+    Map<String, Set<String>> phoneBook = new HashMap<>();
 
-    public void add(String lastName, String phoneNumber) {
-        if (phoneBook.containsKey(lastName) && !phoneBook.get(lastName).contains(phoneNumber)) {
-            phoneBook.get(lastName).add(phoneNumber);
-        } else {
-            ArrayList<String> phoneCollection = new ArrayList<>();
-            phoneCollection.add(phoneNumber);
-            phoneBook.put(lastName, phoneCollection);
+    public boolean add(String lastName, String phoneNumber) {
+        if (!phoneBook.containsKey(lastName)) {
+            phoneBook.put(lastName, new LinkedHashSet<>());
         }
+        return phoneBook.get(lastName).add(phoneNumber);
     }
 
-    public String get(String lastName) {
+    public Set<String> get(String lastName) {
+        return phoneBook.getOrDefault(lastName, Collections.emptySet());
+    }
+
+    public String print(String lastName) {
         if (phoneBook.containsKey(lastName)) {
 
             StringBuilder phoneNumToString = new StringBuilder();
