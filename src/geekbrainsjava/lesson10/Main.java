@@ -37,19 +37,17 @@ public class Main {
             System.out.println("Слово " + uniqueWordList.toArray()[i] + " встречается " + repeatedWordCounter + " раз");
         }
 
-        System.out.println();
+        System.out.println();   //Homework part 2
 
         Phonebook phonebook = new Phonebook();
         phonebook.add("Ivanov", "84149872");
         phonebook.add("Ivanov", "84149872");
         phonebook.add("Ivanov", "3527812");
         phonebook.add("Sidorov", "435235212");
-        phonebook.get("Ivanov");
-        phonebook.get("Sidorov");
-        phonebook.get("Petrov");
-//        System.out.println("Ivanov: " + phonebook.get("Ivanov"));
-//        System.out.println("Sidorov: " + phonebook.get("Sidorov"));
-//        System.out.println("Petrov: " + phonebook.get("Petrov"));
+        System.out.println(phonebook.get("Ivanov"));
+        System.out.println(phonebook.get("Sidorov"));
+        System.out.println(phonebook.get("Petrov"));
+
 
     }
 }
