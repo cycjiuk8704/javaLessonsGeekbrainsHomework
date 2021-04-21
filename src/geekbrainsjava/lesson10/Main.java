@@ -44,9 +44,12 @@ public class Main {
         phonebook.add("Ivanov", "84149872");
         phonebook.add("Ivanov", "3527812");
         phonebook.add("Sidorov", "435235212");
-        System.out.println("Ivanov: " + phonebook.get("Ivanov"));
-        System.out.println("Sidorov: " + phonebook.get("Sidorov"));
-        System.out.println("Petrov: " + phonebook.get("Petrov"));
+        phonebook.get("Ivanov");
+        phonebook.get("Sidorov");
+        phonebook.get("Petrov");
+//        System.out.println("Ivanov: " + phonebook.get("Ivanov"));
+//        System.out.println("Sidorov: " + phonebook.get("Sidorov"));
+//        System.out.println("Petrov: " + phonebook.get("Petrov"));
 
     }
 }
