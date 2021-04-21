@@ -1,8 +1,6 @@
 package geekbrainsjava.lesson10;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,17 +22,28 @@ public class Main {
         wordList.add("Candle");
         System.out.println(wordList);
 
-        Set<String> uniqueWordList = new HashSet<>(wordList);
-        System.out.println(uniqueWordList);
+        Map<String, Integer> uniqueWordList = new HashMap<>();
 
-        for (int i = 0; i < uniqueWordList.toArray().length; i++) {
-            int repeatedWordCounter = 0;
-            for (String s : wordList) {
-                if (uniqueWordList.toArray()[i] == s) {
+        Set<String> uniqueWordListForPrint = new HashSet<>(wordList);
+
+        String[] wordArray = wordList.toArray(new String[0]);
+
+        for (int i = 0; i < wordList.size(); i++) {
+
+            int repeatedWordCounter;
+            if (uniqueWordList.containsKey(wordArray[i])) {
+                    repeatedWordCounter = uniqueWordList.get(wordArray[i]);
                     repeatedWordCounter++;
-                }
+                    uniqueWordList.put((String) wordList.toArray()[i], repeatedWordCounter);
+                } else {
+                uniqueWordList.put((String) wordList.toArray()[i], 1);
             }
-            System.out.println("Слово " + uniqueWordList.toArray()[i] + " встречается " + repeatedWordCounter + " раз");
+        }
+
+        String[] uniqueWordArray = uniqueWordListForPrint.toArray(new String[0]);
+
+        for (int i = 0; i < uniqueWordListForPrint.size(); i++) {
+            System.out.println("Слово " + uniqueWordArray[i] + " встречается раз :" + uniqueWordList.get(uniqueWordArray[i]));
         }
 
         System.out.println();   //Homework part 2
