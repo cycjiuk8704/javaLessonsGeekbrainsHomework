@@ -25,7 +25,7 @@ public class Phonebook {
             phoneNumToString.append(lastName).append(": ");
             for (int i = 0; i < phoneBook.get(lastName).toArray().length; i++) {
                 phoneNumToString.append(phoneBook.get(lastName).toArray()[i]);
-                if (i < phoneBook.get(lastName).toArray().length - 1){
+                if (i < phoneBook.get(lastName).toArray().length - 1) {
                     phoneNumToString.append(", ");
                 } else phoneNumToString.append(".");
             }
