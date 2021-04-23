@@ -19,23 +19,25 @@ public class Phonebook {
     }
 
     public String formatToPrint(String lastName) {
-        if (phoneBook.containsKey(lastName)) {
-            Iterator<String> iter = phoneBook.get(lastName).iterator();
-
-            StringBuilder phoneNumToString = new StringBuilder();
-            phoneNumToString.append(lastName).append(": ");
-            for (int i = 0; i < phoneBook.get(lastName).size(); i++) {
-                if (iter.hasNext()) {
-                    phoneNumToString.append(iter.next());
-                    phoneNumToString.append(", ");
-                } else {
-                    phoneNumToString.append(".");
-                }
-
-            }
-            return new String(phoneNumToString);
-        } else {
+        Set<String> phoneBookNote = get(lastName);
+        if (phoneBookNote.isEmpty()) {
             return lastName + ": номера телефонов не найдены";
         }
+        Iterator<String> iter = phoneBook.get(lastName).iterator();
+
+        StringBuilder phoneNumToString = new StringBuilder();
+        phoneNumToString.append(lastName).append(": ");
+        for (int i = 0; i < phoneBook.get(lastName).size(); i++) {
+            if (iter.hasNext()) {
+                phoneNumToString.append(iter.next());
+            }
+            if (iter.hasNext()) {
+                phoneNumToString.append(", ");
+            } else {
+                phoneNumToString.append(".");
+            }
+        }
+        return new String(phoneNumToString);
+
     }
 }

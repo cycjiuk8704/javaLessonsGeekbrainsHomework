@@ -24,19 +24,19 @@ public class Main {
         wordList.add("Candle");
         System.out.println(wordList);
 
-        Map<String, Integer> uniqueWordList = new HashMap<>();
+        Map<String, Integer> uniqueWordMap = new HashMap<>();
 
         for (String s : wordList) {
 
-            if (uniqueWordList.containsKey(s)) {
+            if (uniqueWordMap.containsKey(s)) {
 
-                uniqueWordList.put(s, uniqueWordList.get(s) + 1);
+                uniqueWordMap.put(s, uniqueWordMap.get(s) + 1);
             } else {
-                uniqueWordList.put(s, 1);
+                uniqueWordMap.put(s, 1);
             }
         }
 
-        for (Map.Entry<String, Integer> entry : uniqueWordList.entrySet()) {
+        for (Map.Entry<String, Integer> entry : uniqueWordMap.entrySet()) {
             final String key = entry.getKey();
             final int value = entry.getValue();
             System.out.println("Слово " + key + " встречается раз :" + value);
