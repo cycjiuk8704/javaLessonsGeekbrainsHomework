@@ -25,7 +25,7 @@ public class Phonebook {
             StringBuilder phoneNumToString = new StringBuilder();
             phoneNumToString.append(lastName).append(": ");
             for (int i = 0; i < phoneBook.get(lastName).size(); i++) {
-                if (iter.hasNext()){
+                if (iter.hasNext()) {
                     phoneNumToString.append(iter.next());
                     phoneNumToString.append(", ");
                 } else {
