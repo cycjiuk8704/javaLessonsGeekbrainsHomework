@@ -19,7 +19,9 @@ public class Phonebook {
     }
 
     public String formatToPrint(String lastName) {
+
         Set<String> phoneBookNote = get(lastName);
+
         if (phoneBookNote.isEmpty()) {
             return lastName + ": номера телефонов не найдены";
         }
