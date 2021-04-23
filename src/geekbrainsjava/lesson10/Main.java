@@ -1,6 +1,8 @@
 package geekbrainsjava.lesson10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,26 +26,21 @@ public class Main {
 
         Map<String, Integer> uniqueWordList = new HashMap<>();
 
-        Set<String> uniqueWordListForPrint = new HashSet<>(wordList);
-
-        String[] wordArray = wordList.toArray(new String[0]);
-
-        for (int i = 0; i < wordList.size(); i++) {
-
+        for (String s : wordList) {
             int repeatedWordCounter;
-            if (uniqueWordList.containsKey(wordArray[i])) {
-                    repeatedWordCounter = uniqueWordList.get(wordArray[i]);
-                    repeatedWordCounter++;
-                    uniqueWordList.put((String) wordList.toArray()[i], repeatedWordCounter);
-                } else {
-                uniqueWordList.put((String) wordList.toArray()[i], 1);
+            if (uniqueWordList.containsKey(s)) {
+                repeatedWordCounter = uniqueWordList.get(s);
+                repeatedWordCounter++;
+                uniqueWordList.put(s, repeatedWordCounter);
+            } else {
+                uniqueWordList.put(s, 1);
             }
         }
 
-        String[] uniqueWordArray = uniqueWordListForPrint.toArray(new String[0]);
-
-        for (int i = 0; i < uniqueWordListForPrint.size(); i++) {
-            System.out.println("Слово " + uniqueWordArray[i] + " встречается раз :" + uniqueWordList.get(uniqueWordArray[i]));
+        for (Map.Entry<String, Integer> entry: uniqueWordList.entrySet()){
+            final String key = entry.getKey();
+            final int value = entry.getValue();
+            System.out.println("Слово " + key + " встречается раз :" + value);
         }
 
         System.out.println();   //Homework part 2
