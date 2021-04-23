@@ -18,16 +18,20 @@ public class Phonebook {
         return phoneBook.getOrDefault(lastName, Collections.emptySet());
     }
 
-    public String print(String lastName) {
+    public String formatToPrint(String lastName) {
         if (phoneBook.containsKey(lastName)) {
+            Iterator<String> iter = phoneBook.get(lastName).iterator();
 
             StringBuilder phoneNumToString = new StringBuilder();
             phoneNumToString.append(lastName).append(": ");
             for (int i = 0; i < phoneBook.get(lastName).size(); i++) {
-                phoneNumToString.append(phoneBook.get(lastName).toArray()[i]);
-                if (i < phoneBook.get(lastName).size() - 1) {
+                if (iter.hasNext()){
+                    phoneNumToString.append(iter.next());
                     phoneNumToString.append(", ");
-                } else phoneNumToString.append(".");
+                } else {
+                    phoneNumToString.append(".");
+                }
+
             }
             return new String(phoneNumToString);
         } else {

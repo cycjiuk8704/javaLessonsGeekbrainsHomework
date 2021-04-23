@@ -27,11 +27,10 @@ public class Main {
         Map<String, Integer> uniqueWordList = new HashMap<>();
 
         for (String s : wordList) {
-            int repeatedWordCounter;
+
             if (uniqueWordList.containsKey(s)) {
-                repeatedWordCounter = uniqueWordList.get(s);
-                repeatedWordCounter++;
-                uniqueWordList.put(s, repeatedWordCounter);
+
+                uniqueWordList.put(s, uniqueWordList.get(s) + 1);
             } else {
                 uniqueWordList.put(s, 1);
             }
@@ -50,9 +49,9 @@ public class Main {
         phonebook.add("Ivanov", "84149872");
         phonebook.add("Ivanov", "3527812");
         phonebook.add("Sidorov", "435235212");
-        System.out.println(phonebook.print("Ivanov"));
-        System.out.println(phonebook.print("Sidorov"));
-        System.out.println(phonebook.print("Petrov"));
+        System.out.println(phonebook.formatToPrint("Ivanov"));
+        System.out.println(phonebook.formatToPrint("Sidorov"));
+        System.out.println(phonebook.formatToPrint("Petrov"));
 
 
     }
