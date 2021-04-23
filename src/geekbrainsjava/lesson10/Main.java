@@ -36,7 +36,7 @@ public class Main {
             }
         }
 
-        for (Map.Entry<String, Integer> entry: uniqueWordList.entrySet()){
+        for (Map.Entry<String, Integer> entry : uniqueWordList.entrySet()) {
             final String key = entry.getKey();
             final int value = entry.getValue();
             System.out.println("Слово " + key + " встречается раз :" + value);
