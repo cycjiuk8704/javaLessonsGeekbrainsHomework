@@ -23,21 +23,20 @@ public class Phonebook {
         if (phoneBookNote.isEmpty()) {
             return lastName + ": номера телефонов не найдены";
         }
+
         Iterator<String> iter = phoneBook.get(lastName).iterator();
 
         StringBuilder phoneNumToString = new StringBuilder();
         phoneNumToString.append(lastName).append(": ");
-        for (int i = 0; i < phoneBook.get(lastName).size(); i++) {
-            if (iter.hasNext()) {
-                phoneNumToString.append(iter.next());
-            }
+        while (iter.hasNext()) {
+            phoneNumToString.append(iter.next());
+
             if (iter.hasNext()) {
                 phoneNumToString.append(", ");
-            } else {
-                phoneNumToString.append(".");
             }
         }
-        return new String(phoneNumToString);
+        phoneNumToString.append(".");
 
+        return new String(phoneNumToString);
     }
 }
