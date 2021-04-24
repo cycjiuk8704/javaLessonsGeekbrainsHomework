@@ -5,16 +5,13 @@ import java.util.Collections;
 
 public class ArrayUtils<T> {
 
-    public static <T> T[] swapElements(T[] objArr, int element1, int element2) {
-        try {
+    public static <T> void swapElements(T[] objArr, int element1, int element2) {
 
-            T buf = objArr[element1];
-            objArr[element1] = objArr[element2];
-            objArr[element2] = buf;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println("элементы в массиве не найдены");
-        }
-        return objArr;
+
+        T buf = objArr[element1];
+        objArr[element1] = objArr[element2];
+        objArr[element2] = buf;
+
     }
 
     public static <T> ArrayList<T> transformToList(T[] objArr) {
