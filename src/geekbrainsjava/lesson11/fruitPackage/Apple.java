@@ -6,4 +6,9 @@ public class Apple extends Fruit {
     public float getWeight() {
         return weight;
     }
+
+    @Override
+    public String toString() {
+        return "Apple";
+    }
 }
