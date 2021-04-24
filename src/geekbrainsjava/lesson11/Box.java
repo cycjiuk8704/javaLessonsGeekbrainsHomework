@@ -3,9 +3,10 @@ package geekbrainsjava.lesson11;
 import geekbrainsjava.lesson11.fruitPackage.Fruit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Box<T extends Fruit> {
-    private ArrayList<T> fruitBox = new ArrayList<>();
+    private List<T> fruitBox = new ArrayList<>();
 
     public void addFruit(T fruit) {
         fruitBox.add(fruit);
@@ -25,7 +26,7 @@ public class Box<T extends Fruit> {
         return Math.abs(boxWeight - boxToCompareWeight) < 0.0001;
     }
 
-    private ArrayList<T> extractFruits() {
+    private List<T> extractFruits() {
         return fruitBox;
     }
 
@@ -34,7 +35,7 @@ public class Box<T extends Fruit> {
         fruitBox.clear();
     }
 
-    public ArrayList<T> getFruitBox() {
+    public List<T> getFruitBox() {
         return fruitBox;
     }
 }
