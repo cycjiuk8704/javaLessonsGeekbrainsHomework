@@ -12,12 +12,12 @@ public class Main {
         TwoThreadArrFill.fillArrByHalfs();
         TwoThreadArrFill secondThread = new TwoThreadArrFill();
         secondThread.start();
-        System.out.println(System.currentTimeMillis() - fillingTime);
         try {
             secondThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(System.currentTimeMillis() - fillingTime);
     }
 
     public static int getHALF() {
