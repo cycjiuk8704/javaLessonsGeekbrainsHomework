@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         OneThreadArrFill.fillFullArray();
         long fillingTime = System.currentTimeMillis();
-        TwoThreadArrFill.fillArrByHalfs();
         TwoThreadArrFill secondThread = new TwoThreadArrFill();
         secondThread.start();
         TwoThreadArrFill.fillArrByHalfs();
