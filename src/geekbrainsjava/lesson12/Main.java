@@ -13,11 +13,11 @@ public class Main {
         TwoThreadArrFill secondThread = new TwoThreadArrFill();
         secondThread.start();
         try {
-            secondThread.join();
+            secondThread.join(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(System.currentTimeMillis() - fillingTime);
+        System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingTime));
     }
 
     public static int getHALF() {
