@@ -4,7 +4,7 @@ package geekbrainsjava.lesson12;
 public class Main {
     static final int SIZE = 10_000_000;
     static final int HALF = SIZE / 2;
-    static float[] arr = new float[SIZE];
+    float[] arr = new float[SIZE];
 
     public static void main(String[] args) {
         OneThreadArrFill.fillFullArray();
@@ -24,7 +24,4 @@ public class Main {
         return HALF;
     }
 
-    public static float[] getArr() {
-        return arr;
-    }
 }
