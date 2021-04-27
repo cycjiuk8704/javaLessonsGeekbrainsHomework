@@ -12,12 +12,13 @@ public class Main {
         TwoThreadArrFill.fillArrByHalfs();
         TwoThreadArrFill secondThread = new TwoThreadArrFill();
         secondThread.start();
+        TwoThreadArrFill.fillArrByHalfs();
         try {
             secondThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        TwoThreadArrFill.fillArrByHalfs();
+
         System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingTime));
     }
 
