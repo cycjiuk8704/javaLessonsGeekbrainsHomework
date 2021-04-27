@@ -14,11 +14,12 @@ public class TwoThreadArrFillNoCopy extends Thread implements Runnable {
     public void run() {
         int calcBegin;
         int calcEnd;
+        int halfSize = arr.length / 2;
         if (isFirstHalf) {
             calcBegin = 0;
-            calcEnd = arr.length / 2;
+            calcEnd = halfSize;
         } else {
-            calcBegin = arr.length / 2;
+            calcBegin = halfSize;
             calcEnd = arr.length;
         }
         for (int i = calcBegin; i < calcEnd; i++) {
