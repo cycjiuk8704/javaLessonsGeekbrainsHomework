@@ -3,13 +3,13 @@ package geekbrainsjava.lesson12;
 import java.util.Arrays;
 
 public class OneThreadArrFill {
-    public static void fillFullArray() {
-        float[] arr = Main.getArr();
+
+    public static void fillFullArray(float[] arr) {
         Arrays.fill(arr, 1.0f);
         long fillingTime = System.currentTimeMillis();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-        }
-        System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingTime));
+        CalcClass.calculateFormula(arr);
+
+        System.out.println("Время выполнения в одном потоке, мс : " + (System.currentTimeMillis() - fillingTime));
+        Arrays.fill(arr, 1.0f);
     }
 }
