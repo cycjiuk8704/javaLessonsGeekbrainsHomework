@@ -1,9 +1,10 @@
 package geekbrainsjava.lesson12;
 
 
+import java.util.Arrays;
+
 public class Main {
     static final int SIZE = 10;
-    static final int HALF = SIZE / 2;
 
     public static void main(String[] args) {
 
@@ -11,8 +12,8 @@ public class Main {
         OneThreadArrFill.fillFullArray(arr);
 
         long fillingTime = System.currentTimeMillis();
-        TwoThreadArrFill firstThread = new TwoThreadArrFill(arr, HALF, true);
-        TwoThreadArrFill secondThread = new TwoThreadArrFill(arr, HALF, false);
+        TwoThreadArrFill firstThread = new TwoThreadArrFill(arr, true);
+        TwoThreadArrFill secondThread = new TwoThreadArrFill(arr, false);
         firstThread.start();
         secondThread.start();
         try {
@@ -26,6 +27,22 @@ public class Main {
             System.out.print(v + " ");
         }
 
-    }
+        Arrays.fill(arr, 1.0f);
+
+        fillingTime = System.currentTimeMillis();
+        TwoThreadArrFillNoCopy firstNoCopyThread = new TwoThreadArrFillNoCopy(arr, true);
+        TwoThreadArrFillNoCopy secondNoCopyThread = new TwoThreadArrFillNoCopy(arr, false);
+        try {
+            firstNoCopyThread.join();
+            secondNoCopyThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Время выполнения в двух потоках без копирования массива, мс : " + (System.currentTimeMillis() - fillingTime));
+        for (float v : arr) {
+            System.out.print(v + " ");
+
+        }
 
     }
+}
