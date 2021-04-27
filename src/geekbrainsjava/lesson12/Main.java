@@ -4,7 +4,7 @@ package geekbrainsjava.lesson12;
 public class Main {
     static final int SIZE = 10_000_000;
     static final int HALF = SIZE / 2;
-    float[] arr = new float[SIZE];
+    static float[] arr = new float[SIZE];
 
     public static void main(String[] args) {
         OneThreadArrFill.fillFullArray();
@@ -13,10 +13,11 @@ public class Main {
         TwoThreadArrFill secondThread = new TwoThreadArrFill();
         secondThread.start();
         try {
-            secondThread.join(6000);
+            secondThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        TwoThreadArrFill.fillArrByHalfs();
         System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingTime));
     }
 
@@ -24,4 +25,11 @@ public class Main {
         return HALF;
     }
 
+    public static int getSIZE() {
+        return SIZE;
+    }
+
+    public static float[] getArr() {
+        return arr;
+    }
 }
