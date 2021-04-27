@@ -2,7 +2,7 @@ package geekbrainsjava.lesson12;
 
 
 public class Main {
-    static final int SIZE = 10_000_000;
+    static final int SIZE = 10;
     static final int HALF = SIZE / 2;
 
     public static void main(String[] args) {
@@ -22,6 +22,10 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingTime));
+        for (float v : arr) {
+            System.out.print(v + " ");
+        }
+
     }
 
     }

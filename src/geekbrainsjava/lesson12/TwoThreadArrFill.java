@@ -2,21 +2,26 @@ package geekbrainsjava.lesson12;
 
 public class TwoThreadArrFill extends Thread implements Runnable {
 
-    int size;
-    float[] arr;
-    boolean isFirstHalf;
+    private final int size;
+    private final float[] arr;
+    private final boolean isFirstHalf;
 
 
-    public TwoThreadArrFill(float[] arr, int size, boolean isNewThread) {
+    public TwoThreadArrFill(float[] arr, int size, boolean isFirstHalf) {
         this.arr = arr;
         this.size = size;
-        this.isFirstHalf = isNewThread;
+        this.isFirstHalf = isFirstHalf;
     }
 
     @Override
     public void run() {
         float[] arrHalf = new float[size];
-        CalcClass.calculateFormula(arrHalf);
+        if (isFirstHalf) {
+            System.arraycopy(arr, 0, arrHalf, 0, size);
+        } else {
+            System.arraycopy(arr, size, arrHalf, 0, size);
+        }
+        Calculator.calculateFormula(arrHalf);
         if (isFirstHalf) {
             System.arraycopy(arrHalf, 0, arr, 0, size);
         } else {
