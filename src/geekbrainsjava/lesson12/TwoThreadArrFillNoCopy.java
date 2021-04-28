@@ -15,13 +15,8 @@ public class TwoThreadArrFillNoCopy extends Thread implements Runnable {
         int calcBegin;
         int calcEnd;
         int halfSize = arr.length / 2;
-        if (isFirstHalf) {
-            calcBegin = 0;
-            calcEnd = halfSize;
-        } else {
-            calcBegin = halfSize;
-            calcEnd = arr.length;
-        }
+        calcBegin = isFirstHalf ? 0 : halfSize;
+        calcEnd = isFirstHalf ? halfSize : arr.length;
         for (int i = calcBegin; i < calcEnd; i++) {
             arr[i] = Calculator.calculateFormula(arr[i], i);
         }

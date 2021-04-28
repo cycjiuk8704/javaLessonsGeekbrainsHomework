@@ -9,9 +9,15 @@ public class Main {
     public static void main(String[] args) {
 
         float[] arr = new float[SIZE];
-        OneThreadArrFill.fillFullArray(arr);
+        Arrays.fill(arr, 1.0f);
 
         long fillingBeginTime = System.currentTimeMillis();
+        OneThreadArrFill.fillFullArray(arr);
+        System.out.println("Время выполнения в одном потоке, мс : " + (System.currentTimeMillis() - fillingBeginTime));
+
+        Arrays.fill(arr, 1.0f);
+
+        fillingBeginTime = System.currentTimeMillis();
         TwoThreadArrFill firstThread = new TwoThreadArrFill(arr, true);
         TwoThreadArrFill secondThread = new TwoThreadArrFill(arr, false);
         firstThread.start();
