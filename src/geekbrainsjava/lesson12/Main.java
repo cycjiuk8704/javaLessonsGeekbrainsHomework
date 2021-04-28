@@ -4,7 +4,7 @@ package geekbrainsjava.lesson12;
 import java.util.Arrays;
 
 public class Main {
-    static final int SIZE = 10_000_000;
+    static final int SIZE = 10;
 
     public static void main(String[] args) {
 
@@ -23,6 +23,10 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println("Время выполнения в двух потоках, мс : " + (System.currentTimeMillis() - fillingBeginTime));
+        for (float v : arr) {
+            System.out.print(v + " ");
+        }
+        System.out.println();
 
         Arrays.fill(arr, 1.0f);
 
@@ -38,6 +42,10 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println("Время выполнения в двух потоках без копирования массива, мс : " + (System.currentTimeMillis() - fillingBeginTime));
+        for (float v : arr) {
+            System.out.print(v + " ");
+        }
+        System.out.println();
 
     }
 }
