@@ -13,10 +13,10 @@ public class OneThreadArrFill {
 
 
         System.out.println("Время выполнения в одном потоке, мс : " + (System.currentTimeMillis() - fillingBeginTime));
-        for (float v : arr) {
-            System.out.print(v + " ");
-        }
-        System.out.println();
+//        for (float v : arr) {
+//            System.out.print(v + " ");
+//        }
+//        System.out.println();
         Arrays.fill(arr, 1.0f);
     }
 }

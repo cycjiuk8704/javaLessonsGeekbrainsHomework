@@ -23,7 +23,7 @@ public class TwoThreadArrFillNoCopy extends Thread implements Runnable {
             calcEnd = arr.length;
         }
         for (int i = calcBegin; i < calcEnd; i++) {
-            arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5.0f) * Math.cos(0.2f + i / 5.0f) * Math.cos(0.4f + i / 2.0f));
+            arr[i] = Calculator.calculateFormula(arr[i], i);
         }
     }
 }
