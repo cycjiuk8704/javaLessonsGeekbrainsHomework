@@ -8,6 +8,7 @@ public class Car implements Runnable {
     private int speed;
     private String name;
     CountDownLatch waitForAllParticipantsPrepare;
+    CountDownLatch endRaceLatch;
 
     public String getName() {
         return name;
@@ -17,12 +18,13 @@ public class Car implements Runnable {
         return speed;
     }
 
-    public Car(Race race, int speed, CountDownLatch waitForAllParticipantsPrepare) {
-        this.waitForAllParticipantsPrepare = waitForAllParticipantsPrepare;
+    public Car(Race race, int speed, CountDownLatch waitForAllParticipantsPrepare, CountDownLatch endRaceLatch) {
         this.race = race;
         this.speed = speed;
         CARS_COUNT++;
         this.name = "Участник #" + CARS_COUNT;
+        this.waitForAllParticipantsPrepare = waitForAllParticipantsPrepare;
+        this.endRaceLatch = endRaceLatch;
 
     }
 
@@ -37,8 +39,15 @@ public class Car implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < race.getStages().size(); i++) {
-            race.getStages().get(i).go(this);
+        try {
+            for (int i = 0; i < race.getStages().size(); i++) {
+                race.getStages().get(i).go(this);
+            }
+            endRaceLatch.countDown();
+            endRaceLatch.await();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 }
