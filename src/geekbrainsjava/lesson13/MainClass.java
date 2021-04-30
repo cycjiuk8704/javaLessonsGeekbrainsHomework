@@ -33,6 +33,7 @@ public class MainClass {
         startLatch.countDown();
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+
         try {
 
             endRaceLatch.await();
