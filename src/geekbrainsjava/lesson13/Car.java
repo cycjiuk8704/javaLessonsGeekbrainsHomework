@@ -18,13 +18,11 @@ public class Car implements Runnable {
         return speed;
     }
 
-    public Car(Race race, int speed, CountDownLatch waitForAllParticipantsPrepare, CountDownLatch endRaceLatch) {
+    public Car(Race race, int speed) {
         this.race = race;
         this.speed = speed;
         CARS_COUNT++;
         this.name = "Участник #" + CARS_COUNT;
-        this.waitForAllParticipantsPrepare = waitForAllParticipantsPrepare;
-        this.endRaceLatch = endRaceLatch;
 
     }
 
@@ -34,8 +32,8 @@ public class Car implements Runnable {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int) (Math.random() * 800));
             System.out.println(this.name + " готов");
-            waitForAllParticipantsPrepare.countDown();
-            waitForAllParticipantsPrepare.await();
+            MainClass.waitForAllParticipantsPrepare.countDown();
+            MainClass.startLatch.await();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,8 +41,9 @@ public class Car implements Runnable {
             for (int i = 0; i < race.getStages().size(); i++) {
                 race.getStages().get(i).go(this);
             }
-            endRaceLatch.countDown();
-            endRaceLatch.await();
+            MainClass.endRaceLatch.countDown();
+            MainClass.winLatch.countDown();
+            MainClass.endRaceLatch.await();
         } catch (Exception e) {
             e.printStackTrace();
         }
