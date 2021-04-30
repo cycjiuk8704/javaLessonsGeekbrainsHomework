@@ -1,10 +1,13 @@
 package geekbrainsjava.lesson13;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Car implements Runnable {
     private static int CARS_COUNT;
     private Race race;
     private int speed;
     private String name;
+    CountDownLatch waitForAllParticipantsPrepare;
 
     public String getName() {
         return name;
@@ -14,11 +17,13 @@ public class Car implements Runnable {
         return speed;
     }
 
-    public Car(Race race, int speed) {
+    public Car(Race race, int speed, CountDownLatch waitForAllParticipantsPrepare) {
+        this.waitForAllParticipantsPrepare = waitForAllParticipantsPrepare;
         this.race = race;
         this.speed = speed;
         CARS_COUNT++;
         this.name = "Участник #" + CARS_COUNT;
+
     }
 
     @Override
@@ -27,6 +32,8 @@ public class Car implements Runnable {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int) (Math.random() * 800));
             System.out.println(this.name + " готов");
+            waitForAllParticipantsPrepare.countDown();
+            waitForAllParticipantsPrepare.await();
         } catch (Exception e) {
             e.printStackTrace();
         }
