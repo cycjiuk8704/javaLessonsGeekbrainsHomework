@@ -1,36 +1,16 @@
 package geekbrainsjava.lesson14;
 
-//import java.io.IOException;
-//import java.time.LocalDateTime;
-
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ArrayUtils {
-//    public static final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
-//    public static Handler handler;
-//
-//    static {
-//
-//        try {
-//            handler = new FileHandler("log.txt");
-//            handler.setFormatter(new Formatter() {
-//                @Override
-//                public String format(LogRecord record) {
-//                    return LocalDateTime.now() + " in " + record.getLoggerName() + " with message: " + record.getMessage() + System.lineSeparator();
-//                }
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        logger.setUseParentHandlers(false);
-//
-//        logger.addHandler(handler);
-//    }
 
+    private static final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
 
     public static int[] modifyArray(int[] arr) {
 
         int numberTrigger = 4;
+
 
         for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] == numberTrigger && i == arr.length - 1) {
@@ -44,7 +24,7 @@ public class ArrayUtils {
                 return modifiedArray;
             }
         }
-        Main.logger.log(Level.SEVERE, "в массиве отсутствуют элементы " + "'" + numberTrigger + "" +
+        logger.log(Level.SEVERE, "в массиве отсутствуют элементы " + "'" + numberTrigger + "" +
                 "'");
         throw new RuntimeException();
     }
@@ -57,7 +37,8 @@ public class ArrayUtils {
         int num2Count = 0;
         for (int i : arr) {
             if (i != num1 && i != num2) {
-                Main.logger.log(Level.SEVERE, "в массиве отсутствуют элементы " + "'" + num1 + "', " + "'" + num2 + "'");
+                logger.log(Level.SEVERE, "массив должен состоять только из элементов " + "'" + num1 + "' и " + "'" + num2 + "', " +
+                        "и должен включать в себя хотя бы по одному из этих элементов");
                 throw new RuntimeException();
             }
         }
