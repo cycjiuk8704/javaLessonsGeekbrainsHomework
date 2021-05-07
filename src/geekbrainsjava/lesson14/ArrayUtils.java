@@ -12,6 +12,12 @@ public class ArrayUtils {
 
         try {
             handler = new FileHandler("log.txt");
+            handler.setFormatter(new Formatter() {
+                @Override
+                public String format(LogRecord record) {
+                    return LocalDateTime.now() + " in " + record.getLoggerName() + " with message: " + record.getMessage() + System.lineSeparator();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -22,12 +28,6 @@ public class ArrayUtils {
 
 
     public static int[] modifyArray(int[] arr) {
-        handler.setFormatter(new Formatter() {
-            @Override
-            public String format(LogRecord record) {
-                return LocalDateTime.now() + " in " + record.getLoggerName() + " with message: " + record.getMessage() + System.lineSeparator();
-            }
-        });
 
         int numberTrigger = 4;
 
@@ -49,12 +49,6 @@ public class ArrayUtils {
     }
 
     public static boolean analyseArray(int[] arr) {
-        handler.setFormatter(new Formatter() {
-            @Override
-            public String format(LogRecord record) {
-                return LocalDateTime.now() + " in " + record.getLoggerName() + " with message: " + record.getMessage() + System.lineSeparator();
-            }
-        });
 
         final int num1 = 1;
         final int num2 = 4;
