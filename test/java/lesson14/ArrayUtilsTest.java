@@ -4,26 +4,24 @@ import geekbrainsjava.lesson14.ArrayUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 public class ArrayUtilsTest {
 
     @Test
-    public void testModifyArr1() throws IOException {
+    public void testModifyArr1() {
         int[] expectedArray = new int[]{5, 3, 2, 1, 2};
         int[] actualArray = new int[]{1, 3, 7, 4, 5, 3, 2, 1, 2};
         Assertions.assertArrayEquals(expectedArray, ArrayUtils.modifyArray(actualArray));
     }
 
     @Test
-    public void testModifyArr2() throws IOException {
+    public void testModifyArr2() {
         int[] expectedArray = new int[]{1, 2};
         int[] actualArray = new int[]{1, 3, 7, 4, 5, 3, 4, 1, 2};
         Assertions.assertArrayEquals(expectedArray, ArrayUtils.modifyArray(actualArray));
     }
 
     @Test
-    public void testModifyArr3() throws IOException {
+    public void testModifyArr3() {
         int[] expectedArray = new int[]{0};
         int[] actualArray = new int[]{1, 3, 7, 4, 5, 3, 4, 1, 2, 4};
         Assertions.assertArrayEquals(expectedArray, ArrayUtils.modifyArray(actualArray));
@@ -37,19 +35,19 @@ public class ArrayUtilsTest {
 
 
     @Test
-    public void testAnalyzeArr1() throws IOException {
+    public void testAnalyzeArr1() {
         int[] actualArray = new int[]{1, 1, 1, 4, 4, 1, 1, 1, 4};
         Assertions.assertTrue(ArrayUtils.analyseArray(actualArray));
     }
 
     @Test
-    public void testAnalyzeArr2() throws IOException {
+    public void testAnalyzeArr2() {
         int[] actualArray = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1};
         Assertions.assertFalse(ArrayUtils.analyseArray(actualArray));
     }
 
     @Test
-    public void testAnalyzeArr3() throws IOException {
+    public void testAnalyzeArr3() {
         int[] actualArray = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4};
         Assertions.assertFalse(ArrayUtils.analyseArray(actualArray));
     }

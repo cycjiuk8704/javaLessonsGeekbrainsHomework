@@ -5,13 +5,23 @@ import java.time.LocalDateTime;
 import java.util.logging.*;
 
 public class ArrayUtils {
+    public static final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
+    public static Handler handler;
 
+    static {
 
-    public static int[] modifyArray(int[] arr) throws IOException {
-        final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
+        try {
+            handler = new FileHandler("log.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         logger.setUseParentHandlers(false);
-        Handler handler = new FileHandler("logModifyArray.txt");
+
         logger.addHandler(handler);
+    }
+
+
+    public static int[] modifyArray(int[] arr) {
         handler.setFormatter(new Formatter() {
             @Override
             public String format(LogRecord record) {
@@ -38,11 +48,7 @@ public class ArrayUtils {
         throw new RuntimeException();
     }
 
-    public static boolean analyseArray(int[] arr) throws IOException {
-        final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
-        logger.setUseParentHandlers(false);
-        Handler handler = new FileHandler("logAnalyzeArray.txt");
-        logger.addHandler(handler);
+    public static boolean analyseArray(int[] arr) {
         handler.setFormatter(new Formatter() {
             @Override
             public String format(LogRecord record) {
